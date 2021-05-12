@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
-    {% block contendio %}
+    {% block contenido %}
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token%}
-            {{ formulario }}
+            {{ formulario.as_p }}
+            <input type="submit" value="agregar Producto">
         </form>
-    {% endblock %}
+    {%  endblock contenido%}

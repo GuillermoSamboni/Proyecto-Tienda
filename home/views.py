@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 
@@ -36,5 +36,13 @@ def vista_productos(request):
 
 
 def vista_agregar_productos(request):
-    formulario = agregar_producto_form()
+    if request.method =='POST':
+        formulario=agregar_producto_form(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('/productos/')
+    else:    
+        formulario = agregar_producto_form()
+
+
     return render(request,'agregarProducto.html', locals())
