@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+    {% block contenido %}
+    <h1>ver detalle del producto</h1>
+    
+    <p>{{ detalle.id }}</p>
+    <p>{{ detalle.nombre }}</p>
+    <p>{{ detalle.precio }}</p>
+    <p>{{ detalle.marca }}</p>
+    <p>
+        {% for c in detalle.categorias.all %}
+            {{c}}
+        {% endfor %}
+    </p>
+        
+    <a href="{% url 'vista_productos' %}">Regresar a productos</a>
+
+    {% endblock contenido %}
